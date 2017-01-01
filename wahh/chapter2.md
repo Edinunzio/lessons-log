@@ -17,20 +17,41 @@ Sessions are a way to identify and process the series of requests that originate
 The majority of attacks seek to compromise the tokens issued to other users. If so, the attacker can masquerade as the authenticated victim.
 
 ### Access Control
-
+Final logical step in user access control is to make and enforce correct decisions about whether each individual request should be permitted or denied.
 
 ## Handling User Input
+Since a huge variety of attacks involve unexpected input, the application must handle user input in a safe manner. "Input validation" is commonly cited as a defense, but it is not bullet proof.
+
 ### Varieties of Input
+Because of the many types of input, there is no one size fits all validation check. An application can impose strict limitations on specific fields, but other fields may require accepting arbitrary input.
+
+**When an application detects that server-generated data has been modified in a way that is not possible for an ordinary user with a standard browser, the application should reject the request and log the incident for potential investigation.**
+
 ### Approaches to Input Handling
 #### "Reject Known Bad"
+This approach blacklists known bad entities. It's considered weak because clever encoding can bypass the list. For example:
+  * If ```SELECT``` is blocked, try ```SeLeCt```
+  * If ``` or 1=1--``` is blocked, try ``` or 2=2--```
+  * If ```alert('xss')``` is blocked, try ```prompt('xss')```
+  * Inserting a ```NULL``` byte anywhere before a blocked expression can cause some filters to stop processing the input and therefore not identify the expression
+
 #### "Accept Known Good"
+Mechanism allows data that matches the whitelist, and blocks everything else.
+
 #### Sanitization
-#### Safe Data Handling
-#### Semantic Checks
-### Boundary Validation
+Approach that recognizes the need to accept data that can't be guaranteed as safe. Potentially malicious characters may be removed, or encoded, or escaped before further processing occurs.
+
+#### Boundary Validation
+Each individual component or functional unit of the server side application treats its inputs as coming from a potentially malicious source. Data validation is performed at each of the trust boundaries, in addition to between the client and the server.
+
 ### Multistep Validation and Canonicalization
+Clever use of encoding and canonicalization can bypass filters. Very difficult to handle. Recursive based stripping may get stuck in infinite loops. These sorts of things might be better to be rejected outright.
+
 ## Handling Attackers
 ### Handling Errors
+A key defense is for the application to handle unexpected errors gracefully. Recover or present suitable error message with no system generated messages nor debug information. Application code should make extensive use of try/catch blocks and checked exceptions.
+
+Unexpected errors often point to defects within the application's defenses.
 ### Maintaining Audit Logs
 ### Alerting Administrators
 ### Reacting to Attacks
