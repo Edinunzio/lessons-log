@@ -28,6 +28,7 @@ Now, most sites are highly functional web applications.
   * blogging
   * email
   * wikis
+
 *Internal business functions:*
   * HR related apps
     * payroll access
