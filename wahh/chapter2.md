@@ -40,4 +40,4 @@
   5. If any of the items were deleted, return to step 1.
 
 Can you bypass this validation mechanism to smuggle the following data past it?
- \\ "><script>alert("foo")</script>
+```"```><script>alert("foo")</script>
