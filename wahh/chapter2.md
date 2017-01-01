@@ -38,6 +38,4 @@
   3. Remove any quotation marks within the input.
   4. URL-decode the input.
   5. If any of the items were deleted, return to step 1.
-
-Can you bypass this validation mechanism to smuggle the following data past it?
-```"```><script>alert("foo")</script>
+  
