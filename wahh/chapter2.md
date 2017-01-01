@@ -7,9 +7,18 @@
   * Managing the application itself by enabling administrators to monitor its activities and configure its functionality
 
 ## Handling User Access
+
 ### Authentication
+This is one of the most basic dependencies in an application's handling of user access. Involves establishing the user is who they say they are. Typically done with username and passwords.
+
 ### Session Management
+Sessions are a way to identify and process the series of requests that originate from each user. The web application creates a session for each user, and issues the user a token that identifies the session. 
+
+The majority of attacks seek to compromise the tokens issued to other users. If so, the attacker can masquerade as the authenticated victim.
+
 ### Access Control
+
+
 ## Handling User Input
 ### Varieties of Input
 ### Approaches to Input Handling
@@ -38,4 +47,3 @@
   3. Remove any quotation marks within the input.
   4. URL-decode the input.
   5. If any of the items were deleted, return to step 1.
-  
