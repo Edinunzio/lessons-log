@@ -53,18 +53,26 @@ A key defense is for the application to handle unexpected errors gracefully. Rec
 
 Unexpected errors often point to defects within the application's defenses.
 ### Maintaining Audit Logs
-### Alerting Administrators
-### Reacting to Attacks
-## Managing the Application
+Valuable for investigations. Effective audit logs should allow owners to know:
 
-### Questions
-1. Why are an application's mechanisms for handling user access only as strong as the weakest of these components?
-2. What is the difference between a session and a session token?
-3. Why is it not always possible to use a whitelist-based approach to input validation?
-4. You are attacking an application that implements an administrative function. You do not have any valid credentials to use the function. Why should you nevertheless pay close attention to it?
-5. An input validation mechanism designed to block cross-site scripting attacks performs the following sequence of steps on an item of input:
-  1. Strip any ```<script>``` expressions that appear
-  2. Truncate the input to 50 characters.
-  3. Remove any quotation marks within the input.
-  4. URL-decode the input.
-  5. If any of the items were deleted, return to step 1.
+  * general activity, key events, what activity took place
+  * which vulnerabilities were exploited
+  * whether attacker gained unauthorized access to data
+  * whether attacker performed unauthorized actions
+  * provide evidence of intruder's identity
+
+Logs should be strongly protected against unauthorized read or write access.
+### Alerting Administrators
+
+A well designed alerting mechanism can use a combination of factors to diagnose that a determined attack is under way and can aggregate related events into a single alert where possible. Anomalous events monitored by alerting mechanisms often include the following:
+
+  * large number of requests, shit that looks scripted
+  * business logic usage anomalies
+  * known attack strings
+  * requests where data hidden from ordinary users has been modified
+
+### Reacting to Attacks
+You're not going to be able to block everything. But you can be annoying. Slow down or terminate sessions. Place more obstacles and be more annoying.
+
+## Managing the Application
+Admins are a prime target. Does one really need to go into full detail what a malicious admin can do? Plus, how many unit tests have you seen IRL on the admin side? Of those, how many are security mind set driven? There's an inherent danger in assuming admin users can be trusted.
