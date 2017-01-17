@@ -3,7 +3,6 @@
 Header information at the beginning of an IP packet.
 
 ## IPv4
-=======
 
 [IPv4](https://tools.ietf.org/html/rfc791) is the fourth version in the development of the Internet Protocol and routes most traffic online. It's a connectionless protocol for use on packet-switched networks, operating on a best effort delivery model.
 
@@ -54,7 +53,6 @@ Consists of 13 required fields and an optional 14th field named *options.*
     * I have no idea what this section means but this is rarely used.
 
 ## IPv6
-=======
 
 Successor to IPv4, is not backwards compatible, and has a different header layout. 
 
