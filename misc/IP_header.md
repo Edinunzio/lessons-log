@@ -57,3 +57,32 @@ Consists of 13 required fields and an optional 14th field named *options.*
 =======
 
 Successor to IPv4, is not backwards compatible, and has a different header layout. 
+
+### Fixed Header
+
+Consists of its first 40 octets (320 bits).
+
+  * Version (4 bits): constant 6 (bit sequence 0110)
+  * Traffic Class (8 bits): holds 2 values:
+      - 6 bits for differentiated services
+      - 2 bits for ECN
+  * Flow Label (20 bits):
+      - when set to non 0 value serves as a hint to routers and switches with multiple outbound paths that these packets should stay on the same path so that they will not be reordered.
+  * Payload Length (16 bits):
+      - size of paylod in octets
+  * Next Header (8 bits):
+      - specifies the type of the next header
+          + usually specifies the transport layer protocol
+  * Hop Limit (8 bits):
+      - replaces TTL field of IPv4
+      - value is decremented by one at each intermediate node visited by the packet.
+      - packet is discarded when the counter reaches 0
+  * Source Address (128 bits):
+      - IPv6 address of sending node
+  * Destination Address (128 bits):
+      - IPv6 address of destination node(s)
+
+
+
+
+
